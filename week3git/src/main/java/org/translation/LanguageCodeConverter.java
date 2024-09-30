@@ -15,7 +15,6 @@ public class LanguageCodeConverter {
 
     private Map<String, String> codeToLanguage;
     private Map<String, String> languageToCode;
-
     /**
      * Default constructor which will load the language codes from "language-codes.txt"
      * in the resources folder.
@@ -30,7 +29,8 @@ public class LanguageCodeConverter {
      * @throws RuntimeException if the resource file can't be loaded properly
      */
     public LanguageCodeConverter(String filename) {
-
+        codeToLanguage = new HashMap<>();
+        languageToCode = new HashMap<>();
         try {
             List<String> lines = Files.readAllLines(Paths.get(getClass()
                     .getClassLoader().getResource(filename).toURI()));
@@ -66,7 +66,6 @@ public class LanguageCodeConverter {
      */
     public String fromLanguage(String language) {
         return languageToCode.getOrDefault(language, "Unknown language");
-
     }
 
     /**
